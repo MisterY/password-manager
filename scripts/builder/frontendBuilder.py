@@ -71,6 +71,7 @@ class FrontendBuilder(object):
 	
 
 	def loadFilesContent (self, basePath, files):
+		global fileHandler
 		result = ""
 		
 		for file in self.filterFiles(files):
@@ -298,7 +299,8 @@ class FrontendBuilder(object):
 			#self.log("assembling copyright header")
 			copyrightValues = self.settings['copyright.values']
 			license = self.loadFilesContent('../../properties', ['license.txt'])
-			result  = self.loadFilesContent('properties', ['creditsAndCopyrights.txt'])
+			#result  = self.loadFilesContent('properties', ['creditsAndCopyrights.txt'])
+			result = 'no copyrights files'
 			
 			result = re.sub('@clipperz.license@', license, result)
 			for key in copyrightValues:
