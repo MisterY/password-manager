@@ -24,7 +24,11 @@ http://127.0.0.1:8000/
 Deployment
 
 Check scripts/builder directory.
+The build script requires Easy Install Python package.
+http://pypi.python.org/pypi/setuptools
+Windows Path must include Python and Scripts directories (i.e. c:\Python27 and c:\Python27\Scripts).
 
+Then install Git Python module.
 easy_install GitPython
 
-python "C:\Alen\Devel\GitHub\password-manager\scripts\builder\main.py" install --ALL
+python "%CD%\builder\main.py" install --ALL
