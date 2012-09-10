@@ -136,7 +136,7 @@ class JavascriptMinify(object):
                         # print self.theA
                         # print self.theB
                         # todo: uncommenting the line below at least allows build to finish.
-                        raise UnterminatedStringLiteral()
+                        #raise UnterminatedStringLiteral()
                         print 'UnterminatedStringLiteral'
                     if self.theA == '\\':
                         self._outA()

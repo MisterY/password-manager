@@ -14,11 +14,11 @@ class PythonBuilder(ScriptLanguageBuilder):
 		return 'python'
 
 
-	def compileCode (self):
-		src = self.sourceFolder()
-		dst = self.targetFolder()
-
-		shutil.copytree(src, dst)
+#	def compileCode (self):
+#		src = self.sourceFolder()
+#		dst = self.targetFolder()
+#
+#		shutil.copytree(src, dst)
 
 
 #	def copyCompiledCodeToTargetDir (self):
