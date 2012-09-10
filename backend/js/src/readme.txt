@@ -32,3 +32,5 @@ Then install Git Python module.
 easy_install GitPython
 
 python "%CD%\builder\main.py" install --ALL
+
+Deployed site contains subdirectories beta and gamma with index.html file inside.
