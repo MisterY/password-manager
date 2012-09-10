@@ -135,7 +135,7 @@ class JavascriptMinify(object):
                     if self.theA <= '\n':
                         # print self.theA
                         # print self.theB
-                        # todo: uncommenting the line below at least allows build to finish.
+                        # todo: commenting the line below at least allows build to finish.
                         #raise UnterminatedStringLiteral()
                         print 'UnterminatedStringLiteral'
                     if self.theA == '\\':
