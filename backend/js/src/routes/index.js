@@ -5,6 +5,7 @@
 
 exports.index = function(req, res){
 	// Check which version to serve.
+	res.redirect('/beta');
 };
 
 /*
