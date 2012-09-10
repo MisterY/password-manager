@@ -4,6 +4,13 @@
  */
 
 exports.index = function(req, res){
+	// Check which version to serve.
+};
+
+/*
+ * POST index
+ */
+exports.index_post = function(req, res){
 	var util = require('util');
 
 	// var param_echo = require('../modules/read_params.js');

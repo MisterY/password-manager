@@ -35,6 +35,8 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/dump', dump.index);
 
+app.post('/', routes.index_post);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
