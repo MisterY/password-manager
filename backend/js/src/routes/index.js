@@ -5,7 +5,7 @@
 
 exports.index = function(req, res){
 	// Check which version to serve.
-	res.redirect('/beta');
+	res.redirect('/beta/index.html');
 };
 
 /*
@@ -20,7 +20,6 @@ exports.index_post = function(req, res){
 	var result = {};
 
 	var method = req.param('method', null);
-	// var text = 'demo';
 	var parameters = req.param('parameters', null);
 
 	switch(method){
@@ -30,6 +29,8 @@ exports.index_post = function(req, res){
 		
 		case "handshake":
 		util.log('handshake');
+		var handshake_handler = require('../modules/handshake.js');
+		handshake_handler.handle(req, res);
 		break;
 
 		case "message":

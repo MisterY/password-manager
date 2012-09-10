@@ -25,6 +25,9 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
+  // 
+  app.use("/beta", express.static(__dirname + '/beta'));
+  app.use("/gamma", express.static(__dirname + '/gamma'));
 });
 
 app.configure('development', function(){
@@ -32,10 +35,11 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+app.get('/index', routes.index);
 app.get('/users', user.list);
 app.get('/dump', dump.index);
 
-app.post('/', routes.index_post);
+app.post('/index', routes.index_post);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
