@@ -127,7 +127,7 @@ def allFrontends ():
 	return ['beta', 'gamma']
 
 def allBackends ():
-	return ['php',  'python']
+	return ['php',  'python', 'js']
 
 #--------------------------------------------------------------------
 
