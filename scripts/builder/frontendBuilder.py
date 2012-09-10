@@ -70,17 +70,29 @@ class FrontendBuilder(object):
 		self.copyResources(self.projectDir, targetFolder, 'js')
 	
 
+	# Loads all files in the basePath and concatenates their contents into string.
 	def loadFilesContent (self, basePath, files):
 		global fileHandler
 		result = ""
 		
+		# self.log("basePath=" + basePath) <= js
+		# print files
+
 		for file in self.filterFiles(files):
 			try:
-				fileHandler = codecs.open(self.absolutePathForSourceFile(basePath, file), 'r', 'utf-8')
+				filePath = self.absolutePathForSourceFile(basePath, file)
+				fileHandler = codecs.open(filePath, 'r', 'utf-8')
 			except:
 				print "FILE: " + file
+				raise
 
-			result += fileHandler.read() + '\n'
+			try:
+				content = fileHandler.read()
+				# self.log(content)
+				result += content + '\n'
+			except:
+				print "Error reading " + file
+				raise
 			fileHandler.close()
 			
 		return result
@@ -156,7 +168,15 @@ class FrontendBuilder(object):
 		output = StringIO.StringIO()
 		
 		jsMinifier = jsmin.JavascriptMinify()
-		jsMinifier.minify(original, output)
+		try:
+			jsMinifier.minify(original, output)
+		except:
+			# Find which file caused the error.
+			# self.log('error!')
+			# e = sys.exc_info()[0]
+			# print js
+			#
+			raise
 		
 		result = output.getvalue()
 		
@@ -175,9 +195,10 @@ class FrontendBuilder(object):
 	
 
 	def compressJS (self, js, description):
+		# print 'Compressing ' + js
 		return self.compressJS_jsmin(js, description)
 		#return self.compressJS_closureCompiler(js, description)
-	
+
 
 	#==========================================================================
 
@@ -299,6 +320,7 @@ class FrontendBuilder(object):
 			#self.log("assembling copyright header")
 			copyrightValues = self.settings['copyright.values']
 			license = self.loadFilesContent('../../properties', ['license.txt'])
+			# todo: the file below is missing
 			#result  = self.loadFilesContent('properties', ['creditsAndCopyrights.txt'])
 			result = 'no copyrights files'
 			
@@ -351,10 +373,23 @@ class FrontendBuilder(object):
 		if assemblyMode == 'INSTALL':
 			copyright = self.assembleCopyrightHeader()
 			css	=	self.cssTagForContent(self.compressCSS(self.loadFilesContent('css', self.settings['css'])))
+			# debug
+			#self.log('DEBUG')
+			#print self.settings['js'] <= list of js files
+			#self.log('END DEBUG')
+			#
+			filesContent = self.loadFilesContent('js', self.settings['js'])
+			try:
+				compressedJS = self.compressJS(filesContent, "application")
+				# compressing fails
+				# compressedJS = filesContent
+			except:
+				# self.log('Error! ' + filesContent)
+				raise
 			js	=	self.scriptTagForContent(
 						self.bookmarklet() +
 						'\n' +
-						self.compressJS(self.loadFilesContent('js', self.settings['js']), "application")
+						compressedJS
 					)
 			jsLoadMode = 'EMBEDDED'
 

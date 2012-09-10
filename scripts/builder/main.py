@@ -122,7 +122,9 @@ def usage (message):
 #--------------------------------------------------------------------
 
 def allFrontends ():
-	return ['beta', 'gamma',  'mobile']
+	# todo: use mobile when it is ready
+	#return ['beta', 'gamma',  'mobile']
+	return ['beta', 'gamma']
 
 def allBackends ():
 	return ['php',  'python']
