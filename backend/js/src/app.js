@@ -40,6 +40,7 @@ app.get('/', routes.index);
 app.get('/index', routes.index);
 app.get('/users', user.list);
 app.get('/dump', dump.index);
+// app.get('/xhr', xhr.index);
 
 app.post('/index', routes.index_post);
 
