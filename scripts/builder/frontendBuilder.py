@@ -320,9 +320,7 @@ class FrontendBuilder(object):
 			#self.log("assembling copyright header")
 			copyrightValues = self.settings['copyright.values']
 			license = self.loadFilesContent('../../properties', ['license.txt'])
-			# todo: the file below is missing
-			#result  = self.loadFilesContent('properties', ['creditsAndCopyrights.txt'])
-			result = 'no copyrights files'
+			result  = self.loadFilesContent('properties', ['creditsAndCopyrights.txt'])
 			
 			result = re.sub('@clipperz.license@', license, result)
 			for key in copyrightValues:
