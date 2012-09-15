@@ -38,6 +38,7 @@ from google.appengine.ext import db
 from google.appengine.ext.webapp import template
 
 #from django.utils import simplejson
+import simplejson
 
 import webapp2
 
@@ -268,6 +269,9 @@ class XHR(webapp2.RequestHandler):
 		elif method == 'handshake':
 			srp_g = 2L
 			srp_n = long("0x%s" % "115b8b692e0e045692cf280b436735c77a5a9e8a9e7ed56c965f87db5b2a2ece3", 16)
+
+			# logging.info(parameters['parameters'])
+			parameters = parameters['parameters']
 
 			message = parameters['message'];
 
