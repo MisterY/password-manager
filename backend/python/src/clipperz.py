@@ -161,7 +161,7 @@ class MainPage(webapp.RequestHandler):
 	def get(self):
 		# logging.info('Entering main page')
 		path = os.path.join(os.path.dirname(__file__), 'static%s' % self.request.path)
-		# logging.debug(path)
+		logging.info('requesting %s' % path)
 		self.response.out.write(template.render(path, {}))
 
 #==============================================================================

@@ -18,3 +18,7 @@ handlers:
 
 - url: /.*
   script: clipperz.py
+- url: /beta
+  static_dir: beta
+- url: /gamma
+  static_dir: gamma
