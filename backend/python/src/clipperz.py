@@ -37,7 +37,9 @@ from google.appengine.ext import webapp
 from google.appengine.ext import db
 from google.appengine.ext.webapp import template
 
-from django.utils import simplejson
+#from django.utils import simplejson
+
+import webapp2
 
 #==============================================================================
 
@@ -157,16 +159,23 @@ class Session(db.Expando):
 
 #==============================================================================
 
-class MainPage(webapp.RequestHandler):
+#class MainPage(webapp.RequestHandler):
+class MainPage(webapp2.RequestHandler):
 	def get(self):
-		# logging.info('Entering main page')
-		path = os.path.join(os.path.dirname(__file__), 'static%s' % self.request.path)
-		logging.info('requesting %s' % path)
-		self.response.out.write(template.render(path, {}))
+		requestedPath = self.request.path
+		if self.request.path == "/":
+			requestedPath = "/index.html"
+		#logging.info('requesting path is %s' % requestedPath)
+		path = os.path.join(os.path.dirname(__file__), 'static%s' % requestedPath)
+		# logging.info('requesting %s' % path)
+		content = template.render(path, {})
+		#content.encode('utf-8')
+		#logging.info(content)
+		self.response.out.write(str(content))
 
 #==============================================================================
 
-class XHR(webapp.RequestHandler):
+class XHR(webapp2.RequestHandler):
 
 	#==========================================================================
 
@@ -705,3 +714,5 @@ def main():
 if __name__ == "__main__":
 	main()
 
+# new code, 2.7
+#app = webapp2.WSGIApplication([('/xhr', XHR), ('/dump', XHR), ('/.*', MainPage)], debug=True)

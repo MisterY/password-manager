@@ -1,7 +1,10 @@
 application: clipperz
 version: 1
-runtime: python
+#runtime: python
+runtime: python27
 api_version: 1
+#threadsafe: true
+threadsafe: false
 
 handlers:
 - url: /json
@@ -16,9 +19,20 @@ handlers:
 - url: /images
   static_dir: images
 
+- url: /favicon\.ico
+  static_files: static/favicon.ico
+  upload: static/favicon\.ico
+
+- url: /beta
+#  static_dir: beta
+  static_files: beta/index.html
+  upload: beta/index\.html
+
+- url: /gamma
+#  static_dir: gamma
+  static_files: gamma/index.html
+  upload: gamma/index\.html
+
 - url: /.*
   script: clipperz.py
-- url: /beta
-  static_dir: beta
-- url: /gamma
-  static_dir: gamma
+#  script: clipperz.app
