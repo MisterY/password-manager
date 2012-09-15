@@ -1,4 +1,5 @@
-application: clipperz
+#application: clipperz
+application: alenspwdmgr
 version: 1
 #runtime: python
 runtime: python27
