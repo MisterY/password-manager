@@ -1,1 +1,10 @@
-hi there
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+Hello and welcome to Python version of Clipperz!
+<p><a href="beta">Beta</a></p>
+<p><a href="gamma">Gamma</a></p>
+</body>
+</html>
