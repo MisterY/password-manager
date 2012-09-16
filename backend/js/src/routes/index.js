@@ -27,14 +27,17 @@ exports.index_post = function(req, res){
 
 	switch(method){
 		case "registration":
-		util.log('registration');
-		util.log(message);
+			util.log('registration');
+			if(message === "completeRegistration"){
+				var registration = require('../modules/registration.js')(parameters);
+				registration.completeRegistration();
+			}
 		break;
 		
 		case "handshake":
-		util.log('handshake');
-		var handshake_handler = require('../modules/handshake.js');
-		handshake_handler.handle(req, res);
+			util.log('handshake');
+			var handshake_handler = require('../modules/handshake.js');
+		
 		break;
 
 		case "message":
@@ -55,6 +58,6 @@ exports.index_post = function(req, res){
 	var finalResult = {
 		"result": result
 	};
-	res.send(finalResult);
+	res.send(JSON.stringify(finalResult));
 	util.log("finalResult: " + finalResult);
 };
