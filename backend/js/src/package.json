@@ -15,7 +15,11 @@
   "dependencies": {
     "express": "3.0.0rc4",
     "jade": "*",
-    "sqlite": "*"
+    "sqlite3": "*"
   },
+  "engines":{
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
   "license": "GNU Affero General Public License"
 }

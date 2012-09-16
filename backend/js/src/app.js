@@ -10,7 +10,7 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , dump = require('./routes/dump')
-  , xhr = require('./routes/xhr')
+//  , xhr = require('./routes/xhr')
   , http = require('http')
   , path = require('path');
 

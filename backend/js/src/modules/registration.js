@@ -31,6 +31,8 @@ exports.completeRegistration = function(){
 	user.updateCredentials(parameters['credentials']);
 	user.update(parameters['user']);
 	// user.put()
+	var db = require('./db').getDb();
+	util.log(db.toString());
 
 	result['lock'] = user.lock;
 	result['result'] = "done";
