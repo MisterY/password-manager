@@ -21,10 +21,14 @@ exports.index_post = function(req, res){
 
 	var method = req.param('method', null);
 	var parameters = req.param('parameters', null);
+	// parse JSON
+	parameters = JSON.parse(parameters);
+	var message = parameters['parameters']['message'];
 
 	switch(method){
 		case "registration":
 		util.log('registration');
+		util.log(message);
 		break;
 		
 		case "handshake":
